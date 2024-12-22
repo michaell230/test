@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ez Plore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #1a3744;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #1a3744;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background-color: #c94d4d;
+            border-radius: 8px;
+        }
+
+        .user-info {
+            color: white;
+        }
+
+        .phone {
+            color: #ffd700;
+        }
+
+        .points {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 20px;
+        }
+
+        .search-bar {
+            background-color: #1a3744;
+            padding: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 25px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #c94d4d;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .destinations {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .destination-card {
+            background-color: #1a3744;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .package-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .package-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .package-details {
+            flex: 1;
+        }
+
+        .location {
+            color: #ff7f50;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .duration, .quota {
+            color: #ffffff;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .price {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .book-btn {
+            padding: 10px 30px;
+            border: none;
+            border-radius: 8px;
+            background-color: #ffd700;
+            color: #1a3744;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .main-content {
+            background-color: #ff7f50;
+            min-height: calc(100vh - 200px);
+            border-radius: 30px 30px 0 0;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="profile">
+            <div class="logo"></div>
+            <div class="user-info">
+                <h2>Ez Plore</h2>
+                {% if nama %}
+                    <p>Hi! {{ nama }}</p>
+                    <p class="phone">{{ nomor_telepon }}</p>
+                {% else %}
+                    <p>Welcome, Guest</p>
+                    <p class="phone">Please login</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="points">
+            <span class="star">★</span>
+            <span>0</span>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Cari...">
+    </div>
+
+    <div class="nav-buttons">
+        <button class="nav-btn">Tren</button>
+        <button class="nav-btn">Rekomendasi</button>
+    </div>
+
+    <div class="main-content">
+        <div class="destinations">
+            {% for package in packages %}
+            <div class="destination-card">
+                <div class="package-info">
+                    <img src="/static/img/wisata{{ package['ID_PAKET'] }}.jpg" alt="{{ package['NAMA_PAKET'] }}" class="package-image">
+                    <div class="package-details">
+                        <p class="location">{{ package['NAMA_PAKET'] }}</p>
+                        <p class="duration">Durasi: {{ package['DURASI'] }} hari</p>
+                        <p class="quota">Kuota: {{ package['KUOTA'] }} orang</p>
+                        <p class="price">Rp {{ '{:,.0f}'.format(package['HARGA']) }}</p>
+                    </div>
+                </div>
+                <button class="book-btn">Pesan</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

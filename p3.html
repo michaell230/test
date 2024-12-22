@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ Explore - Create Account</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FF7F2A;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+        }
+
+        .title {
+            color: #163B44;
+            font-size: 32px;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .title-dots {
+            color: #163B44;
+            font-size: 32px;
+            margin-bottom: 4rem;
+            text-align: left;
+        }
+
+        .question {
+            color: #163B44;
+            font-size: 24px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 25px;
+            background-color: #163B44;
+            color: white;
+            font-size: 16px;
+        }
+
+        .input-field::placeholder {
+            color: #ffffff80;
+        }
+
+        .age-notice {
+            color: #163B44;
+            font-size: 14px;
+            margin-top: 0.5rem;
+            text-align: left;
+        }
+
+        .next-button {
+            background-color: #163B44;
+            color: white;
+            border: none;
+            padding: 0.8rem 3rem;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 3rem;
+        }
+
+        .next-button:hover {
+            background-color: #1f4d59;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="EZ Explore Logo" class="logo">
+
+
+        <h1 class="title">Membuat</h1>
+        <h1 class="title-dots">Akun...</h1>
+
+        <h2 class="question">Masukkan data diri anda!</h2>
+
+        <form action="/register2" method="POST">
+            <input type="text" class="input-field" name="name" placeholder="Nama" required>
+            <input type="email" class="input-field" name="email" placeholder="Email" required>
+            <input type="text" class="input-field" name="phone" placeholder="Nomor Telepon" required>
+            <input type="password" class="input-field" name="password" placeholder="Password" required>
+            <button type="submit" class="next-button">Selanjutnya</button>
+        </form>
+        
+    </div>
+</body>
+</html>
