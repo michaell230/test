@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ Explore - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FF7F2A;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+
+        .tagline {
+            color: #163B44;
+            font-size: 24px;
+            margin-bottom: 3rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 25px;
+            background-color: #163B44;
+            color: white;
+            font-size: 16px;
+        }
+
+        .input-field::placeholder {
+            color: #ffffff80;
+        }
+
+        .signup-link {
+            margin: 1rem 0;
+            color: #163B44;
+            text-decoration: none;
+        }
+
+        .signup-text {
+            color: #163B44;
+            margin: 1rem 0;
+        }
+
+        .signup-text a {
+            color: #163B44;
+            text-decoration: underline;
+        }
+
+        .login-button {
+            background-color: #163B44;
+            color: white;
+            border: none;
+            padding: 0.8rem 3rem;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .login-button:hover {
+            background-color: #1f4d59;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="EZ Explore Logo" class="logo">
+        <h1 class="tagline">Makes ez to explore around<br>the world!</h1>
+        
+        <!-- Tambahkan form untuk mengirimkan data -->
+        <form action="/" method="POST">
+            <!-- Input dengan atribut name untuk mengirim data -->
+            <input type="text" name="username_or_email" class="input-field" placeholder="*Nama / Email" required>
+            <input type="password" name="password" class="input-field" placeholder="*Password" required>
+            
+            <!-- Link ke halaman registrasi -->
+            <div class="signup-text">
+                Belum memiliki akun? <a href="/register1">Buat akun</a>
+            </div>
+            
+            <!-- Tombol untuk submit form -->
+            <button type="submit" class="login-button">Masuk</button>
+        </form>
+    </div>
+</body>
+
+</html>
